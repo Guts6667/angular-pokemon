@@ -1,0 +1,26 @@
+<div class="home__wrapper">
+  <div class="home__banner">
+    <div class="home__banner-veil">
+      <h1>Welcome to {{ title }}!</h1>
+    </div>
+</div>
+  <label for="pokemon">Search a Pokemon</label>
+  <input name="pokemon" class="home__input" type="number" (click)="selectPokemon($event)" min="0" max="{{pokemons.length -1}}">
+  <span>You chose {{selectedPokemon}}</span>
+  <input class="home__input" #input (keyup)="0" type="text" name="" id="">
+  <span>{{input.value}}</span>
+  <div class="home__cardWrapper">
+    <article *ngFor="let pokemon of pokemons" class="home__card">
+      <img src="{{pokemon.picture}}" alt="{{pokemon.name}}">
+      <h2>{{pokemon.name}}</h2>
+      <span class="title" *ngFor="let type of pokemon.types">{{type}} </span>
+    </article>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+<!-- {{pokemons.map((item) => { return(
+  <article>
+    <h2>{{ item }}</h2>
+  </article>
+  ) } )}} -->
