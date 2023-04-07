@@ -1,16 +1,35 @@
 <div class="home__wrapper">
   <div class="home__banner">
     <div class="home__banner-veil">
-      <h1>Welcome to {{ title }}!</h1>
+      <h1>Welcome to my {{ title }}!</h1>
     </div>
-</div>
-  <label for="pokemon">Search a Pokemon</label>
-  <input name="pokemon" class="home__input" type="number" (click)="selectPokemon($event)" min="0" max="{{pokemons.length -1}}">
-  <span>You chose {{selectedPokemon}}</span>
-  <input class="home__input" #input (keyup)="0" type="text" name="" id="">
-  <span>{{input.value}}</span>
+  </div>
+  <div class="home__inputs">
+    <label for="pokemon">Search a Pokemon</label>
+    <input name="pokemon" class="home__input" type="number" #input (keyup.enter)="selectPokemon(input.value)" min="0"
+      max="{{pokemonList.length}}">
+    <span *ngIf="pokemonSelected">You chose {{pokemonSelected.name}}</span>
+    <span *ngIf="!pokemonSelected">No Pokemon found.</span>
+    <input class="home__input" #input (keyup)="0" type="text" name="" id="">
+    <span>{{input.value}}</span>
+  </div>
+
+  <div class="home__selectedWrapper">
+    <article *ngIf="pokemonSelected" class="home__card" pokemonBorderCard="palegreen">
+      <img src="{{pokemonSelected.picture}}" alt="{{pokemonSelected.name}}">
+      <h2>{{pokemonSelected.name}}</h2>
+      <div class="home__card-details">
+        <span class="title" *ngFor="let type of pokemonSelected.types">{{type}} </span>
+        <div>
+          <span>{{pokemonSelected.hp}} <em style="color: palegreen;"> hp </em> </span>
+          <span>{{pokemonSelected.cp}} <em style="color: paleturquoise;"> cp </em> </span>
+        </div>
+      </div>
+
+    </article>
+  </div>
   <div class="home__cardWrapper">
-    <article *ngFor="let pokemon of pokemons" class="home__card">
+    <article *ngFor="let pokemon of pokemonList" class="home__card">
       <img src="{{pokemon.picture}}" alt="{{pokemon.name}}">
       <h2>{{pokemon.name}}</h2>
       <span class="title" *ngFor="let type of pokemon.types">{{type}} </span>

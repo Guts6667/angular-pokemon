@@ -25,7 +25,19 @@
       font-weight: bolder;
       color: black;
       text-shadow: 0px 1px 1px goldenrod;
+      text-align: center;
     }
+  }
+  &__inputs{
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  &__selectedWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &__cardWrapper {
     display: flex;
@@ -34,6 +46,7 @@
     justify-content: space-evenly;
     column-gap: 10px;
     row-gap: 10px;
+    margin:  0 20px;
   }
   &__card {
     width: 25%;
@@ -60,6 +73,10 @@
     }
     .title {
       text-align: end;
+    }
+    &-details{
+      display: flex;
+      justify-content: space-between;
     }
   }
   &__input {
